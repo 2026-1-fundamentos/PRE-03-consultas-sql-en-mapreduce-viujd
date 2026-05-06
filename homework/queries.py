@@ -133,7 +133,31 @@ def reducer_query_5(sequence):
 # SELECT day, AVG(tip)
 # FROM tips
 # GROUP BY day;
-#
+
+def mapper_query_6(sequence):
+    """Mapper"""
+    result = []
+    for index, (_, row) in enumerate(sequence):
+        if index == 0:
+            continue
+        row_values = row.strip().split(",")
+        day = row_values[3]
+        tip = float(row_values[1])
+        result.append((day, tip))
+    return result
+
+
+def reducer_query_6(sequence):
+    """Reducer"""
+    totals = dict()
+    counts = dict()
+    for key, value in sequence:
+        if key not in totals:
+            totals[key] = 0.0
+            counts[key] = 0
+        totals[key] += value
+        counts[key] += 1
+    return [(day, totals[day] / counts[day]) for day in totals]
 
 
 #
@@ -175,6 +199,13 @@ def run():
         reducer=reducer_query_5,
         input_directory="files/input",
         output_directory="files/query_5",
+    )
+
+    run_mapreduce_job(
+    mapper=mapper_query_6,
+    reducer=reducer_query_6,
+    input_directory="files/input",
+    output_directory="files/query_6",
     )
 
 if __name__ == "__main__":
