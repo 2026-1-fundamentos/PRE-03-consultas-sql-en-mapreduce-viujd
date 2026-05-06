@@ -1,11 +1,8 @@
 # pylint: disable=broad-exception-raised
 # pylint: disable=import-error
 
-<<<<<<< HEAD
+
 import .mapreduce.run_mapreduce_job as run_mapreduce_job  # type: ignore
-=======
-import mapreduce.run_mapreduce_job as run_mapreduce_job  # type: ignore
->>>>>>> 3e46c49dd78d360f23515bb04f7b9d24f3c4c550
 
 #
 # Columns:
