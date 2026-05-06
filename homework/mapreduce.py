@@ -33,4 +33,8 @@ def hadoop(input_folder, output_folder, mapper_fn, reducer_fn):
     result = reducer_fn(pairs_sequence)
     create_output_directory(output_folder)
     save_results_to_output(result)
+<<<<<<< HEAD
     create_success_file(output_folder)
+=======
+    create_success_file(output_folder)
+>>>>>>> 3e46c49dd78d360f23515bb04f7b9d24f3c4c550
